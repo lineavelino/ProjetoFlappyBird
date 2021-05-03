@@ -1,0 +1,80 @@
+
+[NEAT]
+fitness_criterion     = max # o que queremos otimizar no programa - no caso um pássaro que maximize a pontuação
+fitness_threshold     = 1000 # limite - quando o jogo deve parar (quando o pássaro passar de 1.000 canos)
+pop_size              = 100 # tamanho da população - 100 pássaros a cada geração
+reset_on_extinction   = False # se extinguir todas as espécies dar erro para sinalizar, ao invés de ficar tentando sem conseguir avançar
+
+[DefaultGenome]
+# node activation options
+activation_default      = tanh # função de ativação do nó - nesse caso tangente hiperbólica
+activation_mutate_rate  = 0.0 # testa outra função? nesse caso não
+activation_options      = tanh # opções de funções de ativação, nesse caso repete a tangente hiperbólica
+
+# node aggregation options
+aggregation_default     = sum # forma de agregação das informações
+aggregation_mutate_rate = 0.0 # não tentar outra forma de agregação
+aggregation_options     = sum
+
+# node bias options
+bias_init_mean          = 0.0 # média
+bias_init_stdev         = 1.0 # desvio padrão
+bias_max_value          = 30.0 # valor máximo
+bias_min_value          = -30.0 # valor mínimo
+bias_mutate_power       = 0.5 # poder / potencial da mutação
+bias_mutate_rate        = 0.7 # taxa de mutação - probabilidade de modificar o bias de um pássaro pro outro
+bias_replace_rate       = 0.1 # possibilidade de substituição do bias - criar um novo bias de número aleatório ao invés de reutilizar
+
+# genome compatibility options - nível de semelhança entre pássaros para definir uma espécie
+compatibility_disjoint_coefficient = 1.0
+compatibility_weight_coefficient   = 0.5
+
+# connection add/remove rates - probabilidade de adicionar / remover conexões
+conn_add_prob           = 0.5
+conn_delete_prob        = 0.5
+
+# connection enable options
+enabled_default         = True # todas conexões ativas
+enabled_mutate_rate     = 0.01 # probabilidade de ter mutação
+
+feed_forward            = True # ordem de alimentação da rede neural - nesse caso da esquerda pra direita
+initial_connection      = full # inicialmente, todos os nós vão estar conectados aos outputs
+
+# node add/remove rates - probabilidade de adicionar / excluir conexões e nós
+node_add_prob           = 0.2
+node_delete_prob        = 0.2
+
+# network parameters - como a rede neural vai ser iniciada
+num_hidden              = 0
+num_inputs              = 3
+num_outputs             = 1
+
+# node response options - número que o nó vai multiplicar
+response_init_mean      = 1.0
+response_init_stdev     = 0.0
+response_max_value      = 30.0
+response_min_value      = -30.0
+response_mutate_power   = 0.0
+response_mutate_rate    = 0.0
+response_replace_rate   = 0.0
+
+# connection weight options - peso dos números das conexões
+weight_init_mean        = 0.0
+weight_init_stdev       = 1.0
+weight_max_value        = 30
+weight_min_value        = -30
+weight_mutate_power     = 0.5
+weight_mutate_rate      = 0.8
+weight_replace_rate     = 0.1
+
+[DefaultSpeciesSet]
+compatibility_threshold = 3.0 # parâmetro (limite) pra ajudar a definir as espécies dentro da população
+
+[DefaultStagnation]
+species_fitness_func = max
+max_stagnation       = 20 # se uma espécie não conseguir evoluir por 20 gerações, ela estará estagnada e deve ser eliminada
+species_elitism      = 2 # se isso acontecer com todas as espécies, manter sempre 2 espécies para que o programa não precise recomeçar
+
+[DefaultReproduction]
+elitism            = 2 # quantos pássaros de uma espécie serão passados para a próxima geração sem mutação
+survival_threshold = 0.2 # percentual de uma espécie que pode se reproduzir na geração seguinte
