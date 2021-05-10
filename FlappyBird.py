@@ -271,6 +271,8 @@ def main(genomas, config):  # fitness function recebe dois parâmetros
         if adicionar_cano:
             pontos += 1
             canos.append(Cano(600))
+            for genoma in lista_genomas:
+                genoma.fitness += 5
         for cano in remover_canos:
             canos.remove(cano)
 
