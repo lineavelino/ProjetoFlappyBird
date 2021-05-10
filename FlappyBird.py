@@ -88,7 +88,7 @@ class Passaro:
             self.contagem_imagem = 0
 
         # se o pássaro tiver caindo não vai bater a asa
-        if self.angulo <= 80:
+        if self.angulo <= -80:
             self.imagem = self.IMGS[1]
             self.contagem_imagem = self.TEMPO_ANIMACAO * 2
 
