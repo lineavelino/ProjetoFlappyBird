@@ -230,6 +230,14 @@ def main(genomas, config):  # fitness function recebe dois parâmetros
                         for passaro in passaros:
                             passaro.pular()
 
+        indice_cano = 0
+        if len(passaros) > 0:
+            if len(canos) > 1 and passaros[0].x > (canos[0].x + canos[0].CANO_TOPO.get_width()):
+                indice_cano = 1
+        else:
+            rodando = False
+            break
+
         # mover as coisas
         for passaro in passaros:
             passaro.mover()
