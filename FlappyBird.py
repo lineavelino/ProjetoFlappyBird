@@ -1,6 +1,10 @@
 import pygame  # criação de jogos
 import os  # integrar código com arquivos do computador
 import random  # geração de números aleatórios
+import neat  # importando a inteligência artificial
+
+ia_jogando = True
+geracao = 0
 
 # definir altura e largura da tela
 TELA_LARGURA = 500
