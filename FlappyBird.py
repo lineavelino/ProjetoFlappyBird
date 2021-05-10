@@ -257,6 +257,10 @@ def main(genomas, config):  # fitness function recebe dois parâmetros
             for i, passaro in enumerate(passaros):
                 if cano.colidir(passaro):
                     passaros.pop(i)  # excluir pássaro que bateu
+                    if ia_jogando:
+                        lista_genomas[i].fitness -= 1
+                        lista_genomas.pop(i)
+                        redes.pop(i)
                 if not cano.passou and passaro.x > cano.x:
                     cano.passou = True
                     adicionar_cano = True
