@@ -224,10 +224,11 @@ def main(genomas, config):  # fitness function recebe dois parâmetros
                 rodando = False
                 pygame.quit()
                 quit()
-            if evento.type == pygame.KEYDOWN:  # se usou teclado
-                if evento.key == pygame.K_SPACE:
-                    for passaro in passaros:
-                        passaro.pular()
+            if not ia_jogando:
+                if evento.type == pygame.KEYDOWN:  # se usou teclado
+                    if evento.key == pygame.K_SPACE:
+                        for passaro in passaros:
+                            passaro.pular()
 
         # mover as coisas
         for passaro in passaros:
