@@ -1,29 +1,29 @@
 
 [NEAT]
-fitness_criterion     = max # o que queremos otimizar no programa - no caso um pássaro que maximize a pontuação
-fitness_threshold     = 1000 # limite - quando o jogo deve parar (quando o pássaro passar de 1.000 canos)
-pop_size              = 100 # tamanho da população - 100 pássaros a cada geração
-reset_on_extinction   = False # se extinguir todas as espécies dar erro para sinalizar, ao invés de ficar tentando sem conseguir avançar
+fitness_criterion     = max
+fitness_threshold     = 1000
+pop_size              = 100
+reset_on_extinction   = False
 
 [DefaultGenome]
 # node activation options
-activation_default      = tanh # função de ativação do nó - nesse caso tangente hiperbólica
-activation_mutate_rate  = 0.0 # testa outra função? nesse caso não
-activation_options      = tanh # opções de funções de ativação, nesse caso repete a tangente hiperbólica
+activation_default      = tanh
+activation_mutate_rate  = 0.0
+activation_options      = tanh
 
 # node aggregation options
-aggregation_default     = sum # forma de agregação das informações
-aggregation_mutate_rate = 0.0 # não tentar outra forma de agregação
+aggregation_default     = sum
+aggregation_mutate_rate = 0.0
 aggregation_options     = sum
 
 # node bias options
-bias_init_mean          = 0.0 # média
-bias_init_stdev         = 1.0 # desvio padrão
-bias_max_value          = 30.0 # valor máximo
-bias_min_value          = -30.0 # valor mínimo
-bias_mutate_power       = 0.5 # poder / potencial da mutação
-bias_mutate_rate        = 0.7 # taxa de mutação - probabilidade de modificar o bias de um pássaro pro outro
-bias_replace_rate       = 0.1 # possibilidade de substituição do bias - criar um novo bias de número aleatório ao invés de reutilizar
+bias_init_mean          = 0.0
+bias_init_stdev         = 1.0
+bias_max_value          = 30.0
+bias_min_value          = -30.0
+bias_mutate_power       = 0.5
+bias_mutate_rate        = 0.7
+bias_replace_rate       = 0.1
 
 # genome compatibility options - nível de semelhança entre pássaros para definir uma espécie
 compatibility_disjoint_coefficient = 1.0
@@ -34,11 +34,11 @@ conn_add_prob           = 0.5
 conn_delete_prob        = 0.5
 
 # connection enable options
-enabled_default         = True # todas conexões ativas
-enabled_mutate_rate     = 0.01 # probabilidade de ter mutação
+enabled_default         = True
+enabled_mutate_rate     = 0.01
 
-feed_forward            = True # ordem de alimentação da rede neural - nesse caso da esquerda pra direita
-initial_connection      = full # inicialmente, todos os nós vão estar conectados aos outputs
+feed_forward            = True
+initial_connection      = full
 
 # node add/remove rates - probabilidade de adicionar / excluir conexões e nós
 node_add_prob           = 0.2
@@ -68,13 +68,13 @@ weight_mutate_rate      = 0.8
 weight_replace_rate     = 0.1
 
 [DefaultSpeciesSet]
-compatibility_threshold = 3.0 # parâmetro (limite) pra ajudar a definir as espécies dentro da população
+compatibility_threshold = 3.0
 
 [DefaultStagnation]
 species_fitness_func = max
-max_stagnation       = 20 # se uma espécie não conseguir evoluir por 20 gerações, ela estará estagnada e deve ser eliminada
-species_elitism      = 2 # se isso acontecer com todas as espécies, manter sempre 2 espécies para que o programa não precise recomeçar
+max_stagnation       = 20
+species_elitism      = 2
 
 [DefaultReproduction]
-elitism            = 2 # quantos pássaros de uma espécie serão passados para a próxima geração sem mutação
-survival_threshold = 0.2 # percentual de uma espécie que pode se reproduzir na geração seguinte
+elitism            = 2
+survival_threshold = 0.2
