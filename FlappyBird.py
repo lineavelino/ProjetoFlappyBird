@@ -101,6 +101,7 @@ class Passaro:
     def get_mask(self):
         return pygame.mask.from_surface(self.imagem)
 
+
 class Cano:
     # constantes
     DISTANCIA = 200
@@ -239,7 +240,7 @@ def main(genomas, config):  # fitness function recebe dois parâmetros
             break
 
         # mover as coisas
-        for passaro in passaros:
+        for i, passaro in enumerate(passaros):
             passaro.mover()
             lista_genomas[i].fitness += 0.1  # aumentar fitness
             output = redes[i].activate((passaro.y,
@@ -279,6 +280,9 @@ def main(genomas, config):  # fitness function recebe dois parâmetros
         for i, passaro in enumerate(passaros):
             if (passaro.y + passaro.imagem.get_height()) > chao.y or passaro.y < 0:
                 passaros.pop(i)
+                if ia_jogando:
+                    lista_genomas.pop(i)
+                    redes.pop(i)
 
         desenhar_tela(tela, passaros, canos, chao, pontos)
 
