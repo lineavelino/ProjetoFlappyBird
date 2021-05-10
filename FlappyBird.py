@@ -191,9 +191,23 @@ def desenhar_tela(tela, passaros, canos, chao, pontos):
     pygame.display.update()
 
 
-def main():
-    # criar objetos
-    passaros = [Passaro(230, 350)]
+def main(genomas, config):  # fitness function recebe dois parâmetros
+    global geracao  # para modificar a variável
+    geracao += 1
+
+    if ia_jogando:
+        redes = []
+        lista_genomas = []
+        passaros = []
+        for _, genoma in genomas:  # _ simboliza uma variável descartável (nesse caso IdGenome)
+            rede = neat.nn.FeedForwardNetwork.create(genoma, config)
+            redes.append(rede)
+            genoma.fitness = 0  # comanda a lógica da inteligência artificial
+            lista_genomas.append(genoma)
+            passaros.append(Passaro(230, 350))
+    else:
+        passaros = [Passaro(230, 350)]
+
     chao = Chao(730)
     canos = [Cano(700)]
     tela = pygame.display.set_mode((TELA_LARGURA, TELA_ALTURA))
